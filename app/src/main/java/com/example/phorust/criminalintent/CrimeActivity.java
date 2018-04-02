@@ -8,10 +8,10 @@ import android.os.Bundle;
 
 import butterknife.ButterKnife;
 
-public class CrimeActivity extends FragmentActivity {
+public class CrimeActivity extends AppCompatActivity {
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_crime);
         ButterKnife.bind(this);
