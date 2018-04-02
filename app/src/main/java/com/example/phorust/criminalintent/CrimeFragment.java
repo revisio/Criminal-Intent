@@ -1,6 +1,9 @@
+package com.example.phorust.criminalintent;
+
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.Editable;
+import android.text.Layout;
 import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -10,13 +13,11 @@ import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
-import com.example.phorust.criminalintent.R;
 
 import butterknife.BindView;
-import butterknife.ButterKnife;
 
 /**
- * Created by phorust on 4/1/18.
+ * Created by phorust on 4/2/18.
  */
 
 public class CrimeFragment extends Fragment {
@@ -26,7 +27,6 @@ public class CrimeFragment extends Fragment {
     @BindView(R.id.crime_solved) CheckBox mSolvedCheckBox;
 
     @Override
-    //notice that this onCreate is public so that it can be accessed by any activity
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
         mCrime = new Crime();
@@ -63,4 +63,5 @@ public class CrimeFragment extends Fragment {
         });
         return v;
     }
+
 }
