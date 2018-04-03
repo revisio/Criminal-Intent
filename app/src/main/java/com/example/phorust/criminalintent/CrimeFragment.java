@@ -15,17 +15,18 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
 
 import butterknife.BindView;
+import butterknife.ButterKnife;
 
 /**
  * Created by phorust on 4/2/18.
  */
 
 public class CrimeFragment extends Fragment {
-    private Crime mCrime;
     @BindView(R.id.crime_title) EditText mTitleField;
     @BindView(R.id.crime_date) Button mDateButton;
     @BindView(R.id.crime_solved) CheckBox mSolvedCheckBox;
-
+    private Crime mCrime;
+//    private Button mDateButton;
     @Override
     public void onCreate(Bundle savedInstanceState){
         super.onCreate(savedInstanceState);
@@ -35,6 +36,7 @@ public class CrimeFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState){
         View v = inflater.inflate(R.layout.fragment_crime, container, false);
+        ButterKnife.bind(this, v);
 
         mDateButton.setText(mCrime.getDate().toString());
         mDateButton.setEnabled(false);
