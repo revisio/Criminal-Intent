@@ -4,6 +4,7 @@ import android.support.v4.app.BundleCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -71,6 +72,7 @@ public class CrimeListFragment extends Fragment{
         public void bind(Crime crime){
             mCrime = crime;
             mTitleTextView.setText(mCrime.getTitle());
+            Log.e("Error check", mCrime.getDate().toString());
             mDateTextView.setText(mCrime.getDate().toString());
         }
 
