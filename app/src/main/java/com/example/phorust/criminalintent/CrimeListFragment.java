@@ -1,4 +1,5 @@
 package com.example.phorust.criminalintent;
+import android.media.Image;
 import android.os.Bundle;
 import android.support.v4.app.BundleCompat;
 import android.support.v4.app.Fragment;
@@ -8,11 +9,14 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 import butterknife.ButterKnife;
@@ -51,6 +55,7 @@ public class CrimeListFragment extends Fragment{
         implements View.OnClickListener{
         private TextView mTitleTextView;
         private TextView mDateTextView;
+        private ImageView mSolvedImageView;
         private Crime mCrime;
 
 
@@ -60,6 +65,7 @@ public class CrimeListFragment extends Fragment{
 
             mTitleTextView = (TextView) itemView.findViewById(R.id.crime_title);
             mDateTextView = (TextView) itemView.findViewById(R.id.crime_date);
+            mSolvedImageView = (ImageView) itemView.findViewById(R.id.crime_solved);
         }
 
         @Override
@@ -69,11 +75,18 @@ public class CrimeListFragment extends Fragment{
                     .show();
         }
 
+        public String formatDate(Date rawDate){
+            SimpleDateFormat fmt = new SimpleDateFormat("EEE, MMM yyyy");
+            String fmtDate = fmt.format(rawDate);
+            return fmtDate;
+        }
+
         public void bind(Crime crime){
             mCrime = crime;
             mTitleTextView.setText(mCrime.getTitle());
-            Log.e("Error check", mCrime.getDate().toString());
-            mDateTextView.setText(mCrime.getDate().toString());
+            String holderDate = formatDate(mCrime.getDate());
+            mDateTextView.setText(holderDate);
+            mSolvedImageView.setVisibility(crime.isSolved() ? View.VISIBLE : View.GONE);
         }
 
 
